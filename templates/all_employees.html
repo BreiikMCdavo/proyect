@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos los empleados</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold mb-6 text-center">Todos los empleados</h1>
+        
+        <div class="mb-4 text-center">
+            <a href="{{ url_for('attendance.add_employee') }}" class="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+                Agregar empleado
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {% for employee in employees %}
+                <div class="bg-white shadow-md rounded-lg p-4 hover:bg-gray-50">
+                    <h2 class="text-lg font-semibold mb-2">{{ employee.name }}</h2>
+                    
+                    <form action="{{ url_for('attendance.update_attendance', employee_id=employee.id) }}" method="post" class="flex items-center mb-2">
+                        <select name="status" class="border border-gray-300 rounded-md mr-2">
+                            <option value="present">Presente</option>
+                            <option value="absent">Ausente</option>
+                        </select>
+                        <button type="submit" class="bg-green-500 text-white py-1 px-3 rounded hover:bg-green-600" aria-label="Update attendance for {{ employee.name }}">
+                            Actualizar asistencia
+                        </button>
+                    </form>
+                    
+                    <a href="{{ url_for('attendance.overview', department=employee.department) }}" class="text-blue-500 hover:underline" aria-label="View attendance overview for {{ employee.name }}">
+                        Resumen
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+</body>
+</html>
