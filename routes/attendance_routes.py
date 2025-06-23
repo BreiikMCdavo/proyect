@@ -109,3 +109,4 @@ def overview(department):
 @attendance_blueprint.route("/",methods=['GET'])
 def welcome():
     return render_template('welcome.html')
+

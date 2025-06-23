@@ -1,15 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome</title>
+    <title>Bienvenido</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100 flex items-center justify-center h-screen">
 
-    <div class="text-center bg-white p-8 rounded-lg shadow-md w-200">
-        <h1 class="text-3xl font-bold text-gray-800 mb-4">Bienvenido al sistema de asistencia</h1>
+    <div class="text-center bg-white p-8 rounded-lg shadow-md w-full max-w-xl">
+        <h1 class="text-3xl font-bold text-gray-800 mb-4">
+            {% if usuario %}
+                ¡Bienvenido, {{ usuario.correo }}!
+            {% else %}
+                ¡Bienvenido al sistema de asistencia!
+            {% endif %}
+        </h1>
         <p class="text-gray-600 mb-6">
             Este sistema le permite administrar la asistencia de los empleados, ver informes y agregar nuevos empleados fácilmente.
         </p>

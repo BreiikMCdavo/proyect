@@ -11,9 +11,17 @@
     <div class="container mx-auto px-4 py-8">
         <h1 class="text-3xl font-bold mb-6 text-center">Todos los empleados</h1>
         
-        <div class="mb-4 text-center">
-            <a href="{{ url_for('attendance.add_employee') }}" class="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+        <div class="mb-4 text-center flex justify-center gap-4">
+            <a href="{{ url_for('attendance.add_employee') }}" class="inline-flex items-center bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+               
                 Agregar empleado
+            </a>
+
+            <a href="{{ url_for('admin.reportepdf') }}" class="inline-flex items-center bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                </svg>
+                Descargar PDF
             </a>
         </div>
 
